@@ -1,7 +1,6 @@
 package com.ssthouse.audiotest.recorder;
 
 import android.content.Context;
-import android.media.MediaRecorder;
 
 import com.ssthouse.audiotest.util.SDCardUtil;
 
@@ -11,21 +10,21 @@ import java.io.IOException;
  * 录音控制类
  * Created by ssthouse on 2016/1/7.
  */
-public class AudioRecorder {
+public class MediaRecordHelper {
 
     private Context context;
 
     /**
      * 录音器
      */
-    private MediaRecorder recorder;
+    private android.media.MediaRecorder recorder;
 
     /**
      * 构造方法
      *
      * @param context
      */
-    public AudioRecorder(Context context) {
+    public MediaRecordHelper(Context context) {
         this.context = context;
     }
 
@@ -34,12 +33,12 @@ public class AudioRecorder {
      * 启动
      */
     public void start() {
-        recorder = new MediaRecorder();// new出MediaRecorder对象
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder = new android.media.MediaRecorder();// new出MediaRecorder对象
+        recorder.setAudioSource(android.media.MediaRecorder.AudioSource.MIC);
         // 设置MediaRecorder的音频源为麦克风
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+        recorder.setOutputFormat(android.media.MediaRecorder.OutputFormat.AMR_NB);
         // 设置MediaRecorder录制的音频格式
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        recorder.setAudioEncoder(android.media.MediaRecorder.AudioEncoder.AMR_NB);
         // 设置MediaRecorder录制音频的编码为amr.
         recorder.setOutputFile(SDCardUtil.getSDCardPath()+"audioTest.wav");
         // 设置录制好的音频文件保存路径

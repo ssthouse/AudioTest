@@ -1,4 +1,4 @@
-package com.ssthouse.audiotest;
+package com.ssthouse.audiotest.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,7 +11,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.ssthouse.audiotest.recorder.AudioRecorder;
+import com.ssthouse.audiotest.player.MusicPlayer;
+import com.ssthouse.audiotest.R;
+import com.ssthouse.audiotest.recorder.MediaRecordHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private Button btnRecord;
 
-    private MediaController mediaController;
+    private MusicPlayer mediaController;
 
-    private AudioRecorder audioRecorder;
+    private MediaRecordHelper audioRecorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +49,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        audioRecorder = new AudioRecorder(this);
+        audioRecorder = new MediaRecordHelper(this);
 
-        mediaController = new MediaController(this);
+        mediaController = new MusicPlayer(this);
 
         initView();
 
     }
-
 
     private void initView() {
         //
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     audioRecorder.stop();
                     Toast.makeText(MainActivity.this, "录音文件生成成功", Toast.LENGTH_SHORT).show();
                 } else {
+                    Toast.makeText(MainActivity.this, "开始录音", Toast.LENGTH_SHORT).show();
                     audioRecorder.start();
                     isRecording = true;
                 }

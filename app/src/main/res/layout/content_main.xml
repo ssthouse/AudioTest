@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ssthouse.audiotest.MainActivity"
+    tools:context=".view.MainActivity"
     tools:showIn="@layout/activity_main">
 
 
@@ -22,5 +22,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="开启pcm播放" />
+        android:text="手机扬声器播放音乐" />
+
+    <Switch
+        android:id="@+id/id_sw_play_pcm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="播放录制的pcm文件" />
+
+    <Switch
+        android:layout_marginTop="16dp"
+        android:text="回声消除开启"
+        android:id="@+id/id_sw_aec_enable"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/id_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
